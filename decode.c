@@ -44,17 +44,7 @@ Status read_and_validate_decode_args(char *argv[],DecodeInfo *decInfo)
 
   
 }
-    /*
-    1.check argv[2] == .bmp
-    yes-> store argv[2] to decInfo
-
-    2.if argv[3] == NULL
-    yes->store default name for output file to decInfo
-
-    3. check argv[3] is not having . dot 
-    we dont know the type of file while decoding we will find out the type of file
-    
-    */
+  
 
 
 Status do_decoding(DecodeInfo *decInfo)
@@ -154,26 +144,7 @@ Status do_decoding(DecodeInfo *decInfo)
       
   }
 
-   /*
-    1.open stego file
-    2.call skip_bmp_header(decInfo->fptr_stego)
-    3.char magic_string[50];
-    4.decode_magic_string(decInfo->fptr_stego,magic_string) 
-    5.read magic string from user 
-    6.compare user entered and decoded magic string is same
-    no--> err:invalid magic string
-    return failure
-    7.int extn_size
-    8.decode_extn_size(decInfo->fptr_stego, &extn_size)
-    9.char extn[10];
-    10.  decode_extn(decInfo->fptr_stego,extn,extn_size)
-    11.concatinate output file name with decoded extn
-    12.open output file
-    13.int file_size
-    14.decode_sec_file_size(decInfo->stego, &file_size)
-    15.decode_sec_data(decInfo->fptr_stego,decInfo->fptr_dest,file_size)
-    16.close files
-    17.return e_success*/
+
 }
    
  Status skip_bmp_header(FILE *fptr_stego)
@@ -197,13 +168,7 @@ printf("decoded magic string successfully\n");
     return e_success;
   }
 
-    /*
-    for(int i=0;i<2;i++)
-    1. read 8 bytes buffer from stego file
-    char temp[8];
-    2. call magic_string[i] = lsb_to_byte(temp)
-    */
-    
+ 
     char lsb_to_byte(char *buffer)//8 bytes
 {
   char data=0;
@@ -219,27 +184,9 @@ printf("decoded magic string successfully\n");
     
   
 }
-  /*
-      run a loop for 8 times
-      {
-        get lsb of each index of buffer and store to ith position of data variable
-      }
-      retrun data
-    
-}
-      */
 
-/*int lsb_to_size(char *buffer)//32 bytes
-{
- char size=0;
-   for(int i=0;i<32;i++)
-   {
-    char lsb=buffer[i]&1;
-    size = size | (lsb<<(31-i));
-   }
-   return size;
-printf("decoded lsb to size successfully\n");
-}*/
+
+
 
 int lsb_to_size(char *buffer)   // 32 bits
 {
@@ -265,11 +212,6 @@ Status decode_extn_size(FILE *fptr_stego, int *extn_size)
 
     return e_success;
 }
-/*
-  1. read 32 bytes buffer
-  2. *extn_size = lsb_to_size(temp)
-  3. return success
-*/
 
 Status decode_extn(FILE *fptr_stego,char *extn,int extn_size)
 {
@@ -288,14 +230,7 @@ Status decode_extn(FILE *fptr_stego,char *extn,int extn_size)
   return e_success;
 }
 
-    /*
-    run a loop for 0 to extn_size-1
-      1.read 8 byte temp buffer
-      2. extn[i]=lsb_to_byte(temp)
-    
-    */
-    
-
+  
 Status decode_sec_file_size(FILE *fptr_stego, int *file_size)
 {
  char temp[32];
@@ -307,10 +242,7 @@ printf("decoded sec file size successfully\n");
  return e_success;
 }
 
- /*
- 1.read 32 bytes buffer
- 2.*file_size = lsb_to_size(buffer)
- */
+
 Status decode_sec_data(FILE *fptr_stego,FILE *fptr_dest,int file_size)
 {
 char ch=0;
@@ -328,15 +260,11 @@ for(int i=0;i<file_size;i++)
 
 printf("offset position of secret file %ld\n",ftell(fptr_stego));
      return e_success;
-    /*   
-    run a loop for file_size_times
-    1.read 8 bytes buffer
-    2. char ch = lsb_to_byte(temp)
-    3.write ch to dest file
-    */
+ 
     
     
 }
+
 
 
 
