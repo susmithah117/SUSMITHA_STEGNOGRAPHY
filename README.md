@@ -1,9 +1,7 @@
 LSB Image Steganography 🔐
 
 A command-line interface (CLI) application developed in C that enables users to hide secret text messages within BMP (Bitmap) images. By utilizing Least Significant Bit (LSB) substitution, this tool embeds data into the raw pixel bytes of an image, ensuring the changes are imperceptible to the human eye.
-
-🚀 Overview
-
+🚀 Overview:
 Steganography is the art of hiding information within a non-secret medium. This project focuses on the BMP file format because of its uncompressed nature, which allows for direct manipulation of pixel data without the artifacts found in formats like JPEG.
 How it Works:
 
