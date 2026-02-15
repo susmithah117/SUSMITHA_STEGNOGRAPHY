@@ -91,16 +91,5 @@ if(ret == e_decode)
      }
     
    }
-   // Status check_capacity(EncodeInfo *encInfo){
-        /*
-        1.calculate no of bytes needed for encoding from src files
-           count = (magic_str_len + extn_size(int) + extn_len + 
-           file_size(int) + file_data_len + 54) * 8 + 54 
 
-        2. check count <= src_file_size
-        get the src_file_size from the function it is already written
-        
-    
-        */
-    
 
