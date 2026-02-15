@@ -9,14 +9,7 @@
         ftell(encInfo->fptr_src_image), \
         ftell(encInfo->fptr_stego_image))
 
-/* Function Definitions */
 
-/* Get image size
- * Input: Image file ptr
- * Output: width * height * bytes per pixel (3 in our case)
- * Description: In BMP Image, width is stored in offset 18,
- * and height after that. size is 4 bytes
- */
 
 uint get_image_size_for_bmp(FILE *fptr_image)
 {
@@ -36,13 +29,7 @@ uint get_image_size_for_bmp(FILE *fptr_image)
     return width * height * 3;
 }
 
-/* 
- * Get File pointers for i/p and o/p files
- * Inputs: Src Image file, Secret file and
- * Stego Image file
- * Output: FILE pointer for above files
- * Return Value: e_success or e_failure, on file errors
- */
+
 Status open_files(EncodeInfo *encInfo)
 {
     // Src Image file
@@ -205,16 +192,7 @@ Status do_encoding(EncodeInfo *encInfo)
 }
 Status check_capacity(EncodeInfo *encInfo)
 {
-    /* calculate no. of bytes needed for encoding from src file
-            count = (magic_str_len +
-            extn_size(int) + 
-            extn_len + 
-            file_size(int) + 
-            file_data_len ) * 8 + 54
-
-        2. check count <= src_file_size
-        yes-> return sucess
-        no-> return failure*/
+   
         int size_required;
         int src_fsize;
         int sec_file;
